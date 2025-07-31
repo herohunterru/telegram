@@ -25,7 +25,7 @@ def get_gemini_response(api_key, prompt):
         print("1. Конфигурирую Gemini API...")
         genai.configure(api_key=api_key)
         # Новый, правильный код
-        model = genai.GenerativeModel('gemini-2.5-pro-latest')
+        model = genai.GenerativeModel('gemini-1.5-pro-latest')
         
         print(f"2. Отправляю запрос в Gemini...")
         response = model.generate_content(prompt)
