@@ -2,10 +2,8 @@ name: Daily Gemini to Telegram Poster
 
 on:
   schedule:
-    # Запускать каждый день в 7:00 по UTC (10:00 по МСК)
     - cron: '0 7 * * *'
   
-  # Позволяет запускать автоматизацию вручную для тестов
   workflow_dispatch:
 
 jobs:
@@ -13,26 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Клонируем код из репозитория
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Устанавливаем Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # 3. Устанавливаем зависимости из requirements.txt   
-  - name: Install dependencies
-    run: |
-      python -m pip install --upgrade pip
-      pip install --upgrade --no-cache-dir -r requirements.txt
+      # ЭТОТ БЛОК НУЖНО ПРОВЕРИТЬ ОСОБЕННО ВНИМАТЕЛЬНО
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade --no-cache-dir -r requirements.txt
 
-      # 4. Запускаем наш основной скрипт, передавая ему секреты
       - name: Run Python script
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: python main.py
