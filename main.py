@@ -82,19 +82,19 @@ async def main():
         return
 
     prompt = f"""
-РОЛЬ: HR-эксперт для Telegram.
-СТИЛЬ: Кратко, по делу, без воды, русский язык.
-ЗАДАЧА: Написать уникальный HR-кейс как наша компания помогла найти специалиста.
-ПРАВИЛА: Пост строго до 700 символов, 3-5 релевантных эмодзи, без списков/маркеров.
+ROLE: HR expert for Telegram.
+STYLE: Concise, to the point, no fluff, Russian language.
+TASK: Write a unique HR case study about how our company helped find a specialist.
+RULES: The post must be strictly under 700 characters, use 3-5 relevant emojis, and have no lists/bullet points.
 
-ШАГ 1: Используй профессию: {selected_profession}.
+STEP 1: Use the profession: {selected_profession}.
 
-ШАГ 2: Напиши пост строго по следующей структуре (каждый пункт с новой строки):
-Заголовок: (яркий, с "Москва" и сутью кейса 🎯)
-Проблема: (описание сложности 🤔)
-Решение: (суть "фишки" 💡)
-Вывод: (резюме и совет 📌)
-CTA: (нативный призыв с сайтом <a href="https://herohunter.ru">herohunter.ru</a>)
+STEP 2: Write the post strictly according to the following structure (each point on a new line):
+Headline: (catchy, with "Moscow" and the essence of the case 🎯)
+Problem: (description of the challenge 🤔)
+Solution: (the core of our unique approach/trick 💡)
+Conclusion: (summary and advice 📌)
+CTA: (a native call to action with the website <a href="https://herohunter.ru">herohunter.ru</a>)
 """
     
     post_text = get_gemini_response(gemini_key, prompt)
