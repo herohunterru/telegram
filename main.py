@@ -1,7 +1,6 @@
 import os
 import asyncio
-import json
-import requests
+import google.generativeai as genai
 import telegram
 
 # Список профессий для выбора
@@ -20,48 +19,27 @@ PROFESSIONS = [
 ]
 
 def get_gemini_response(api_key, prompt):
-    """Запрашивает уникальный текст у Gemini через прямой HTTP-запрос."""
-    
-    # URL для API-запроса к модели gemini-pro
-    # Новый, правильный код
-url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={api_key}"
-    
-    headers = {
-        'Content-Type': 'application/json'
-    }
-    
-    # Формируем тело запроса в формате, который ожидает Google API
-    data = {
-        "contents": [{
-            "parts": [{
-                "text": prompt
-            }]
-        }]
-    }
-    
+    """Запрашивает уникальный текст у Gemini с использованием официальной библиотеки."""
     try:
-        print("1. Отправляю прямой HTTP-запрос в Gemini API...")
-        response = requests.post(url, headers=headers, data=json.dumps(data), timeout=60) # Добавлен таймаут 60 секунд
+        print("1. Конфигурирую Gemini API...")
+        genai.configure(api_key=api_key)
         
-        # Проверяем, успешен ли запрос (код 200)
-        if response.status_code == 200:
-            response_json = response.json()
-            
-            # Безопасно извлекаем текст из сложной структуры ответа
-            try:
-                text = response_json['candidates'][0]['content']['parts'][0]['text']
-                print("2. Ответ от Gemini успешно получен.")
-                return text.strip()
-            except (KeyError, IndexError) as e:
-                print(f"Ошибка: Не удалось разобрать ответ от Gemini. Структура ответа: {response_json}. Ошибка: {e}")
-                return None
+        # --- ИЗМЕНЕНИЕ ЗДЕСЬ: Используем модель Flash ---
+        model = genai.GenerativeModel('gemini-1.5-flash-latest')
+        
+        print("2. Отправляю запрос в Gemini (модель Flash)...")
+        response = model.generate_content(prompt)
+        
+        if response.text:
+            print("3. Ответ от Gemini успешно получен.")
+            return response.text.strip()
         else:
-            # Если код ответа не 200, выводим ошибку
-            print(f"Ошибка от Gemini API. Статус: {response.status_code}, Ответ: {response.text}")
+            # Добавим вывод для отладки, если ответ пустой
+            print(f"Ошибка: Gemini вернул пустой ответ. Причина блокировки: {response.prompt_feedback.block_reason}")
             return None
             
-    except requests.exceptions.RequestException as e:
-        print(f"Произошла ошибка при отправке HTTP-запроса: {e}")
+    except Exception as e:
+        print(f"Произошла ошибка при работе с Gemini API: {e}")
         return None
 
 async def post_to_telegram(bot_token, channel_id, text_to_post):
@@ -71,16 +49,16 @@ async def post_to_telegram(bot_token, channel_id, text_to_post):
         return False
     
     try:
-        print("3. Инициализирую Telegram-бота...")
+        print("4. Инициализирую Telegram-бота...")
         bot = telegram.Bot(token=bot_token)
         
-        print(f"4. Отправляю сообщение в канал {channel_id}...")
+        print(f"5. Отправляю сообщение в канал {channel_id}...")
         await bot.send_message(
             chat_id=channel_id,
             text=text_to_post,
             parse_mode='HTML'
         )
-        print("5. Сообщение успешно отправлено в Telegram!")
+        print("6. Сообщение успешно отправлено в Telegram!")
         return True
         
     except Exception as e:
@@ -103,7 +81,6 @@ async def main():
         print("Критическая ошибка: Не найдены все секреты...")
         return
 
-    # Ваш основной, качественный промпт
     prompt = f"""
 РОЛЬ: HR-эксперт и копирайтер для Telegram.
 СТИЛЬ: Кратко, по делу, без воды, русский язык.
