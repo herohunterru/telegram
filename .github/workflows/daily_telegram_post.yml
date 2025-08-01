@@ -23,11 +23,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      # 3. Устанавливаем зависимости из requirements.txt
+      # 3. Принудительно устанавливаем последние версии зависимостей
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install --upgrade --no-cache-dir -r requirements.txt
 
       # 4. Запускаем наш основной скрипт, передавая ему секреты
       - name: Run Python script
