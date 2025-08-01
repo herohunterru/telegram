@@ -23,7 +23,8 @@ def get_gemini_response(api_key, prompt):
     """Запрашивает уникальный текст у Gemini через прямой HTTP-запрос."""
     
     # URL для API-запроса к модели gemini-pro
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={api_key}"
+    # Новый, правильный код
+url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={api_key}"
     
     headers = {
         'Content-Type': 'application/json'
