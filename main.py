@@ -84,19 +84,19 @@ async def main():
     prompt = f"""
 ROLE: Expert recruiter and storyteller.
 CONTEXT: Write for HeroHunter recruitment agency's Telegram channel. Audience: HR directors and team leads in Moscow.
-TASK: Create a compelling success story about finding a {selected_profession}.
+TASK: Create a compelling, plausible success story about finding a {selected_profession}.
 LANGUAGE: russian
 STRUCTURE:
-🎯 Headline: "Found [profession] in Moscow in X days"
-🤔 Problem: Specific client pain (tight deadlines, project stuck, competitors poaching)
+🎯 Headline: "research [profession] in Moscow in range(8-14) days"
+🤔 Problem: Specific client pain (project scaling, increase in work volume, business growth)
 💡 Solution: Our unique approach (where we searched, how we convinced)
 📈 Result: Concrete numbers (timeframe, salary, impact)
 📞 CTA: Natural call-to-action with https://herohunter.ru/
 RULES:
 - Max 700 characters
 - Use 4-5 relevant emojis
-- Include specific details: timeframes (3-14 days), salary ranges
-- Mention one concrete search method (LinkedIn, communities, headhunting)
+- Include specific details: timeframes (3-14 days), 
+- Mention one concrete search method (communities, headhunting)
 - No lists or bullet points
 TONE: Confident professional who knows recruitment secrets.
 AVOID: Splashy phrases, Generic phrases like "individual approach", "comprehensive solution".
