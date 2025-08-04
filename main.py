@@ -87,7 +87,7 @@ CONTEXT: Write for HeroHunter recruitment agency's Telegram channel. Audience: H
 TASK: Create a compelling, plausible, success story about finding a {selected_profession}, avoid Splashy phrases.
 LANGUAGE: russian
 STRUCTURE:
-🎯 Headline: "research [profession] in Moscow in range(8-14) days"
+🎯 Headline: "find [profession] in Moscow in range(8-14) days"
 🤔 Problem: Specific client pain (project scaling, increase in work volume, business growth)
 💡 Solution: Our unique approach (where we searched, how we convinced)
 📈 Result: Concrete numbers (timeframe, impact)
