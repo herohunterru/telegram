@@ -87,11 +87,11 @@ CONTEXT: Write for HeroHunter recruitment agency's Telegram channel. Audience: H
 TASK: Create a compelling success story about finding a {selected_profession}.
 LANGUAGE: russian
 STRUCTURE:
-🎯 Headline: "Found [profession] in Moscow in X days when others said impossible"
+🎯 Headline: "Found [profession] in Moscow in X days"
 🤔 Problem: Specific client pain (tight deadlines, project stuck, competitors poaching)
 💡 Solution: Our unique approach (where we searched, how we convinced)
 📈 Result: Concrete numbers (timeframe, salary, impact)
-📞 CTA: Natural call-to-action with HeroHunter.ru
+📞 CTA: Natural call-to-action with https://herohunter.ru/
 RULES:
 - Max 700 characters
 - Use 4-5 relevant emojis
