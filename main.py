@@ -82,19 +82,25 @@ async def main():
         return
 
     prompt = f"""
-ROLE: HR expert for Telegram.
-STYLE: Concise, to the point, no fluff, Russian language.
-TASK: Write a unique HR case study about how our company helped find a specialist.
-RULES: The post must be strictly under 700 characters, use 3-5 relevant emojis, and have no lists/bullet points.
-
-STEP 1: Use the profession: {selected_profession}.
-
-STEP 2: Write the post strictly according to the following structure (each point on a new line):
-Headline: (catchy, with "Moscow" and the essence of the case 🎯)
-Problem: (description of the challenge 🤔)
-Solution: (the core of our unique approach/trick 💡)
-Conclusion: (summary and advice 📌)
-CTA: (a native call to action with the website <a href="https://herohunter.ru">herohunter.ru</a>)
+ROLE: Expert recruiter and storyteller.
+CONTEXT: Write for HeroHunter recruitment agency's Telegram channel. Audience: HR directors and team leads in Moscow.
+TASK: Create a compelling success story about finding a {selected_profession}.
+STRUCTURE:
+🎯 Headline: "Found [profession] in Moscow in X days when others said impossible"
+🤔 Problem: Specific client pain (tight deadlines, project stuck, competitors poaching)
+💡 Solution: Our unique approach (where we searched, how we convinced)
+📈 Result: Concrete numbers (timeframe, salary, impact)
+📞 CTA: Natural call-to-action with HeroHunter.ru
+RULES:
+- Max 700 characters
+- Use 4-5 relevant emojis
+- Include specific details: timeframes (3-14 days), salary ranges
+- Show emotions: from client despair to success joy
+- Mention one concrete search method (LinkedIn, communities, headhunting)
+- Add "against all odds" element
+- No lists or bullet points
+TONE: Confident professional who knows recruitment secrets.
+AVOID: Generic phrases like "individual approach", "comprehensive solution".
 """
     
     post_text = get_gemini_response(gemini_key, prompt)
