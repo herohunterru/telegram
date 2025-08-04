@@ -96,12 +96,10 @@ RULES:
 - Max 700 characters
 - Use 4-5 relevant emojis
 - Include specific details: timeframes (3-14 days), salary ranges
-- Show emotions: from client despair to success joy
 - Mention one concrete search method (LinkedIn, communities, headhunting)
-- Add "against all odds" element
 - No lists or bullet points
 TONE: Confident professional who knows recruitment secrets.
-AVOID: Generic phrases like "individual approach", "comprehensive solution".
+AVOID: Splashy phrases, Generic phrases like "individual approach", "comprehensive solution".
 """
     
     post_text = get_gemini_response(gemini_key, prompt)
