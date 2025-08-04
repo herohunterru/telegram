@@ -85,6 +85,7 @@ async def main():
 ROLE: Expert recruiter and storyteller.
 CONTEXT: Write for HeroHunter recruitment agency's Telegram channel. Audience: HR directors and team leads in Moscow.
 TASK: Create a compelling success story about finding a {selected_profession}.
+LANGUAGE: russian
 STRUCTURE:
 🎯 Headline: "Found [profession] in Moscow in X days when others said impossible"
 🤔 Problem: Specific client pain (tight deadlines, project stuck, competitors poaching)
