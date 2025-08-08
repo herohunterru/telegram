@@ -95,7 +95,7 @@ STRUCTURE:
 RULES:
 - Max 700 characters
 - Use 4-5 relevant emojis
-- Include specific details: timeframes (3-14 days), 
+- Include specific details: timeframes (8-14 days), 
 - Mention one concrete search method (open search on job sites, partner recommendations)
 - No lists or bullet points
 TONE: Confident professional who knows recruitment secrets.
