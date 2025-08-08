@@ -87,15 +87,14 @@ CONTEXT: Write for HeroHunter recruitment agency's Telegram channel. Audience: H
 TASK: Create a compelling, plausible, success story about finding a {selected_profession}, avoid Splashy phrases.
 LANGUAGE: russian
 STRUCTURE:
-🎯 Headline: "found [profession] in Moscow in (8-14) days"
+🎯 Headline: "found [profession] in Moscow in (8,9,10,11,12,13,14) days"
 🤔 Problem: Specific client pain (project scaling, increase in work volume, business growth)
 💡 Solution: Our unique approach (where we searched, how we convinced)
-📈 Result: Concrete numbers (timeframe, impact)
 📞 CTA: Natural call-to-action with https://herohunter.ru/
 RULES:
 - Max 700 characters
 - Use 4-5 relevant emojis
-- Include specific details: timeframes (8-14 days), 
+- Include specific details: timeframes (8,9,10,11,12,13,14 days) 
 - Mention one concrete search method (open search on job sites, partner recommendations)
 - No lists or bullet points
 TONE: Confident professional who knows recruitment secrets.
